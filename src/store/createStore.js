@@ -1,5 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import promise from 'redux-promise-middleware'
+import logger from 'redux-logger'
 import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
@@ -8,7 +10,7 @@ export default (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [thunk]
+  const middleware = [thunk, promise(), logger()]
 
   // ======================================================
   // Store Enhancers

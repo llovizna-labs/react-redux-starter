@@ -2,6 +2,7 @@
 // Constants
 // ------------------------------------
 export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
+export const COUNTER_DECREMENT = 'COUNTER_DECREMENT'
 
 // ------------------------------------
 // Actions
@@ -32,16 +33,26 @@ export const doubleAsync = () => {
   }
 }
 
+export const decrement = (value = -1) => {
+  return {
+    type: COUNTER_DECREMENT,
+    payload: value
+  }
+}
+
 export const actions = {
   increment,
-  doubleAsync
+  doubleAsync,
+  decrement
 }
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [COUNTER_INCREMENT] : (state, action) => state + action.payload
+  [COUNTER_INCREMENT] : (state, action) => state + action.payload,
+  [COUNTER_DECREMENT] : (state, action) => state + action.payload
+
 }
 
 // ------------------------------------
